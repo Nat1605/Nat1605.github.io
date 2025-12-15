@@ -1,1 +1,278 @@
 
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Czas generowania: 02 Gru 2025, 14:06
+-- Wersja serwera: 10.4.25-MariaDB
+-- Wersja PHP: 8.1.10
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Baza danych: `wypozyczalniasprzetutenisowego`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `firmy`
+--
+
+CREATE TABLE `firmy` (
+  `Id_firmy` int(11) NOT NULL,
+  `Nazwa` varchar(30) COLLATE utf8_polish_ci NOT NULL,
+  `Rok_załozenia` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `firmy`
+--
+
+INSERT INTO `firmy` (`Id_firmy`, `Nazwa`, `Rok_załozenia`) VALUES
+(1, 'Babolat', 1875),
+(2, 'Nike', 1964),
+(3, 'Head', 1950),
+(4, 'Tecnifibre', 1979),
+(5, 'Adidas', 1949),
+(6, 'Gamma sports', 1973),
+(7, 'Yonex', 1946),
+(8, 'Joma', 1965),
+(9, 'Universal Sport', 1982),
+(10, 'Prince Sports', 1970);
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `klienci`
+--
+
+CREATE TABLE `klienci` (
+  `Id_klienta` int(11) NOT NULL,
+  `Nazwisko` varchar(30) COLLATE utf8_polish_ci NOT NULL,
+  `Imie` varchar(30) COLLATE utf8_polish_ci NOT NULL,
+  `Miasto` varchar(30) COLLATE utf8_polish_ci NOT NULL,
+  `Ulica` varchar(30) COLLATE utf8_polish_ci NOT NULL,
+  `Nr_domu` varchar(30) COLLATE utf8_polish_ci NOT NULL,
+  `Data_urodzenia` date NOT NULL,
+  `Czy_gral_na_Mistrzostwach_Polski` tinyint(4) NOT NULL,
+  `Numer_telefonu` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `klienci`
+--
+
+INSERT INTO `klienci` (`Id_klienta`, `Nazwisko`, `Imie`, `Miasto`, `Ulica`, `Nr_domu`, `Data_urodzenia`, `Czy_gral_na_Mistrzostwach_Polski`, `Numer_telefonu`) VALUES
+(1, 'Młynarczyk', 'Marzena', 'Siedlce', 'Kwiatowa', '35b', '1965-10-05', 0, 123456789),
+(3, 'Piotrowska', 'Julia', 'Łuków', 'Polna', '8 ', '1998-10-23', 1, NULL),
+(4, 'Lewandowska', 'Gabriela', 'Biardy ', 'Wspólna', '23c', '1984-02-15', 0, 210812673),
+(6, 'Nowak', 'Łukasz', 'Lublin', 'Szkolna', '52', '1983-02-04', 0, 891382912),
+(7, 'Wysocka', 'Katarzyna', 'Sokołów Podlaski', 'Piękna', '15', '1955-12-02', 1, NULL),
+(8, 'Mazur', 'Tomasz', 'Lublin', 'Ogrodowa', '3', '1975-02-02', 1, 561728982),
+(9, 'Szymańska', 'Olga', 'Siedlce', 'Morska', '21', '1979-03-03', 1, NULL),
+(10, 'Dąbrowski', 'Kacper', 'Szczecin', 'Lesna', '9c', '1986-04-22', 0, 362862921),
+(11, 'Woźniak', 'Paweł', 'Białystok', 'Krótka', '52', '1993-05-14', 0, 692395021),
+(12, 'Kaczmarek', 'Monika', 'Łuków', 'Górnicza', '11', '2000-01-11', 1, 512652728),
+(13, 'Wałkowska', 'Katarzyna', 'Biardy', 'Parkowa', '56', '1988-07-04', 1, NULL),
+(14, 'Pytlik', 'Barbara', 'Skierniewice', 'Mickiewicza', '18', '1971-11-11', 0, 517875943),
+(15, 'Pytlik', 'Barbara', 'Skierniewice', 'Mickiewicza', '18', '1971-11-11', 0, 517875943),
+(16, 'Joński', 'Michał', 'Sokołów Podlaski', 'Wiejska', '30', '1980-10-10', 1, NULL),
+(17, 'Wiśniewska', 'Julia', 'Hajnówka', 'Młynarska', '2', '2006-02-02', 0, NULL),
+(18, 'Goławska', 'Weronika', 'Mińsk Mazowiecki', 'Sienkiewicza', '3b', '1989-03-02', 1, NULL),
+(19, 'Wąsowska', 'Maja', 'Radzyń Podlaski', 'Wereszczakówny', '4a', '1991-01-01', 0, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `produkty`
+--
+
+CREATE TABLE `produkty` (
+  `Id_produktu` int(11) NOT NULL,
+  `Data_produkcji` date NOT NULL,
+  `Nazwa_produktu` varchar(30) COLLATE utf8_polish_ci NOT NULL,
+  `Id_firmy` int(11) NOT NULL,
+  `Id_rodzaj_produktu` int(11) NOT NULL,
+  `CenaZa1DzienWypozyczenia` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `produkty`
+--
+
+INSERT INTO `produkty` (`Id_produktu`, `Data_produkcji`, `Nazwa_produktu`, `Id_firmy`, `Id_rodzaj_produktu`, `CenaZa1DzienWypozyczenia`) VALUES
+(1, '2022-11-23', 'Pure Aero 98', 4, 4, 30),
+(2, '2020-11-12', 'Dri-Fit Furry Clasic', 2, 5, 20),
+(3, '2024-08-08', 'Head Team', 3, 2, 15),
+(4, '2022-10-02', 'Tecnifibre Tour Endurance x15', 4, 3, 40),
+(5, '2019-05-17', 'Ubersonic 4', 5, 4, 50),
+(6, '2018-07-30', 'Gamma Advantage (220m)', 6, 6, 10),
+(7, '2021-02-27', 'Yonex Vcore Ace Scarlet', 7, 1, 80),
+(8, '2017-03-15', 'Joma Challenge Skirt purple', 8, 7, 35),
+(9, '2025-10-10', 'Court Royal TN 20', 9, 9, 25),
+(10, '2010-04-19', 'Prince Ball Basket', 10, 10, 40),
+(11, '2016-05-15', 'Percept100', 7, 1, 25);
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `rodzaj_produktu`
+--
+
+CREATE TABLE `rodzaj_produktu` (
+  `Id_rodzaj_produktu` int(11) NOT NULL,
+  `Nazwa` varchar(30) COLLATE utf8_polish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `rodzaj_produktu`
+--
+
+INSERT INTO `rodzaj_produktu` (`Id_rodzaj_produktu`, `Nazwa`) VALUES
+(1, 'Rakieta'),
+(2, 'Opakowanie pilek'),
+(3, 'Torba'),
+(4, 'Buty'),
+(5, 'Opaska na glowe'),
+(6, 'Naciag tenisowy'),
+(7, 'Spódniczka tenisowa'),
+(8, 'Radar tenisowy'),
+(9, 'Siatka tenisowa'),
+(10, 'Koszyk na pilki tenisowe');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `wypozyczenie`
+--
+
+CREATE TABLE `wypozyczenie` (
+  `Id_wypozyczenie` int(11) NOT NULL,
+  `Id_produktu` int(11) NOT NULL,
+  `Id_klienta` int(11) NOT NULL,
+  `Liczba_sztuk` int(11) NOT NULL,
+  `Data_wypozyczenia` date NOT NULL,
+  `Data_zwrotu` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `wypozyczenie`
+--
+
+INSERT INTO `wypozyczenie` (`Id_wypozyczenie`, `Id_produktu`, `Id_klienta`, `Liczba_sztuk`, `Data_wypozyczenia`, `Data_zwrotu`) VALUES
+(1, 6, 4, 2, '2025-09-02', '2025-09-15'),
+(2, 3, 3, 1, '2025-04-23', '2025-04-24'),
+(3, 1, 3, 3, '2025-06-01', '2025-06-03'),
+(4, 5, 1, 2, '2025-03-17', '2025-03-21'),
+(5, 4, 7, 1, '2025-01-02', '2025-01-05'),
+(6, 8, 7, 1, '2025-10-10', '2025-10-14'),
+(7, 10, 8, 2, '2025-05-15', '2025-05-21'),
+(8, 7, 9, 3, '2024-12-20', '2024-12-25'),
+(9, 9, 6, 1, '2025-02-02', '2025-02-10'),
+(10, 6, 4, 2, '2025-08-11', '2025-08-13'),
+(11, 1, 16, 2, '2025-09-12', '2025-09-16'),
+(12, 7, 6, 4, '2024-11-23', '2024-11-29'),
+(13, 10, 17, 3, '2025-07-07', '2025-07-14'),
+(14, 4, 19, 2, '2025-08-23', '2025-08-29'),
+(15, 2, 18, 1, '2025-02-07', '2025-02-07'),
+(16, 3, 18, 3, '2025-09-09', '2025-09-11'),
+(17, 5, 4, 2, '2025-06-05', '2025-06-06'),
+(18, 2, 19, 1, '2025-06-06', '2025-06-07');
+
+--
+-- Indeksy dla zrzutów tabel
+--
+
+--
+-- Indeksy dla tabeli `firmy`
+--
+ALTER TABLE `firmy`
+  ADD PRIMARY KEY (`Id_firmy`),
+  ADD KEY `Id_firmy` (`Id_firmy`);
+
+--
+-- Indeksy dla tabeli `klienci`
+--
+ALTER TABLE `klienci`
+  ADD PRIMARY KEY (`Id_klienta`),
+  ADD KEY `Id_klienta` (`Id_klienta`);
+
+--
+-- Indeksy dla tabeli `produkty`
+--
+ALTER TABLE `produkty`
+  ADD PRIMARY KEY (`Id_produktu`),
+  ADD KEY `Id_firmy` (`Id_firmy`,`Id_rodzaj_produktu`),
+  ADD KEY `Id_rodzaj_produktu` (`Id_rodzaj_produktu`),
+  ADD KEY `Id_produktu` (`Id_produktu`);
+
+--
+-- Indeksy dla tabeli `rodzaj_produktu`
+--
+ALTER TABLE `rodzaj_produktu`
+  ADD PRIMARY KEY (`Id_rodzaj_produktu`),
+  ADD KEY `Id_rodzaj_produktu` (`Id_rodzaj_produktu`);
+
+--
+-- Indeksy dla tabeli `wypozyczenie`
+--
+ALTER TABLE `wypozyczenie`
+  ADD PRIMARY KEY (`Id_wypozyczenie`),
+  ADD KEY `Id_produktu` (`Id_produktu`),
+  ADD KEY `Id_klienta` (`Id_klienta`),
+  ADD KEY `Id_wypozyczenie` (`Id_wypozyczenie`);
+
+--
+-- AUTO_INCREMENT dla zrzuconych tabel
+--
+
+--
+-- AUTO_INCREMENT dla tabeli `klienci`
+--
+ALTER TABLE `klienci`
+  MODIFY `Id_klienta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT dla tabeli `produkty`
+--
+ALTER TABLE `produkty`
+  MODIFY `Id_produktu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT dla tabeli `wypozyczenie`
+--
+ALTER TABLE `wypozyczenie`
+  MODIFY `Id_wypozyczenie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- Ograniczenia dla zrzutów tabel
+--
+
+--
+-- Ograniczenia dla tabeli `produkty`
+--
+ALTER TABLE `produkty`
+  ADD CONSTRAINT `FK_Produkty_Firmy` FOREIGN KEY (`Id_firmy`) REFERENCES `firmy` (`Id_firmy`),
+  ADD CONSTRAINT `FK_Produkty_Rodzaj` FOREIGN KEY (`Id_rodzaj_produktu`) REFERENCES `rodzaj_produktu` (`Id_rodzaj_produktu`);
+
+--
+-- Ograniczenia dla tabeli `wypozyczenie`
+--
+ALTER TABLE `wypozyczenie`
+  ADD CONSTRAINT `FK_Wypozyczenie_Produkty` FOREIGN KEY (`Id_produktu`) REFERENCES `produkty` (`Id_produktu`),
+  ADD CONSTRAINT `FK_wypozyczenie_klienci` FOREIGN KEY (`Id_klienta`) REFERENCES `klienci` (`Id_klienta`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
