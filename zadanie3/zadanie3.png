@@ -1,18 +1,1 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Tytuł mojej strony</title>
-</head>
-<body>
-  <style>
-        img {
-            float: left;
-            width: 50%;              
-            margin: 0 20px 20px 0;    
-        }
-    </style>
-   
-    <img src="zadanie3.png" alt="zrzut ekranu">
-</body>
-</html>
+
