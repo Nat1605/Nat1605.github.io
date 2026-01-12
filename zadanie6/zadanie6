@@ -1,3 +1,10 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>HTML basics</title>
+    </head>
+    <body>
+
 Obliczenia
 <head>
      <meta charset="UTF-8">
@@ -72,3 +79,12 @@ b=<input type="Text" name="b"><br>
 <input type="Button" value="Oblicz iloczyn" onclick="dzielenie()">
 </form>
 <hr>
+
+
+
+
+
+
+
+    </body>
+</html>
