@@ -1,0 +1,63 @@
+<html><html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+
+Obliczenia
+<head>
+     <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+
+
+<script language="JavaScript">
+function weryfikuj mase(x){
+if (x<0 || x>199)
+alert("wpisz inne dane);}
+</script>
+
+<script language="JavaScript">
+
+function weryfikuj wzrost(x){
+if (x>250 || x<100)
+alert("wpisz inne dane);}
+
+</script>
+<script language="JavaScript">
+
+function bmi() {
+
+var skl1=parseFloat(document.Form2.a.value);
+var skl2=parseFloat(document.Form2.b.value);
+
+
+
+
+var wynik = skl1/ (skl2* skl2);
+
+var opis ="";
+if (wynik < 18.5) {
+        opis = "niedowaga";
+    } else if (wynik < 25) {
+        opis = "waga prawidłowa";
+    } else if (wynik < 30) {
+        opis = "nadwaga";
+    } else {
+        opis = "otyłość";
+    }
+alert("bmi ="+  wynik + "\nStan:" + opis);
+}
+</script>
+<form name="Form2">
+masa =<input type="Text" name="a" onchange="weryfikuj wage(this.value);">><br>
+wysokość w m =<input type="Text" name="b" onchange="weryfikuj wage(this.value);">><br>
+<input type="Button" value="Oblicz iloczyn" onclick="bmi()">
+</form>
+<hr>
+      
+
+    </body>
+</html>
